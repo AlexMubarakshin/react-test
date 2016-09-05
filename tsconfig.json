@@ -1,0 +1,19 @@
+{
+  "version": "1.8.9",
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
+    
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "ts-build",
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "typings/browser",
+    "typings/browser.d.ts",
+    "node_modules"
+  ]
+}
