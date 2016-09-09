@@ -27,13 +27,15 @@ module.exports = {
   module: {
     loaders: [
       // .ts(x) files should first pass through the Typescript loader, and then through babel
-      { test: /\.tsx?$/, loaders: ['babel', 'ts-loader'] }
+      { test: /\.tsx?$/, loaders: ['babel', 'ts-loader'] },
+      { test: /\.css$/, loader: 'style!css'},
     ]
   },
   plugins: [
     // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
     new WebpackNotifierPlugin({ alwaysNotify: true }),
     // Add the Webpack HMR plugin so it will notify the browser when the app code changes
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    
   ]
 };
