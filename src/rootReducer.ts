@@ -1,9 +1,7 @@
 // rootReducer.js
 import { combineReducers } from 'redux';
-import todos from './todo/redux/todo.reducer'
-
-const name = 'todos';
+import todo from './todo/index'
 
 export default combineReducers({
-  todos
+  [todo.constants.NAME]: todo.redux.reducer
 });

@@ -5,16 +5,18 @@ var WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = {
   devtool: 'eval',
   // This will be our app's entry point (webpack will look for it in the 'src' directory due to the modulesDirectory setting below). Feel free to change as desired.
-  entry: [
+  entry: {
+    app: [
     // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    'index.tsx'
-  ],
+    'index.tsx' ]
+
+  },
   // Output the bundled JS to dist/app.js
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     publicPath: '/dist',
     path: path.resolve('dist')
   },

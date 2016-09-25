@@ -12,10 +12,10 @@ interface TodoInputProps {
 }
 
 interface TodoInputState {
-    text: string
+  text: string
 }
 
-class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
+export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
 
   constructor(props: TodoInputProps) {
     super(props)
@@ -50,16 +50,14 @@ class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
         classnames({
           edit: this.props.editing,
           'new-todo': this.props.newTodo
-        })}
+        }) }
         type="text"
         placeholder={this.props.placeholder}
         autoFocus="true"
         value={this.state.text}
-        onBlur={this.handleBlur.bind(this)}
-        onChange={this.handleChange.bind(this)}
-        onKeyDown={this.handleSubmit.bind(this)} />
+        onBlur={this.handleBlur.bind(this) }
+        onChange={this.handleChange.bind(this) }
+        onKeyDown={this.handleSubmit.bind(this) } />
     )
   }
 }
-
-export { TodoInput };

@@ -8,13 +8,13 @@ interface TodoListProps {
   todos: Todo[];
   clearCompleted: () => void;
   completeAll: () => void;
-  editTodo: (id: number, text: string) => void;
-  deleteTodo: (id: number) => void;
-  completeTodo: (id: number) => void;
+  editTodo: (todo: Todo, text: string) => Todo;
+  deleteTodo: (todo: Todo) => Todo;
+  completeTodo: (todo: Todo) => Todo;
 }
 
 interface TodoListState {
-    filter: string;
+  filter: string;
 }
 
 const SHOW_ALL = 'show_all'
@@ -27,7 +27,7 @@ const TODO_FILTERS = {
   [SHOW_COMPLETED]: todo => todo.completed
 }
 
-class TodoList extends React.Component<TodoListProps, TodoListState> {
+export class TodoList extends React.Component<TodoListProps, TodoListState> {
 
   constructor(props) {
     super(props)
@@ -47,9 +47,9 @@ class TodoList extends React.Component<TodoListProps, TodoListState> {
     if (todos.length > 0) {
       return (
         <input className="toggle-all"
-               type="checkbox"
-               checked={completedCount === todos.length}
-               onChange={completeAll} />
+          type="checkbox"
+          checked={completedCount === todos.length}
+          onChange={completeAll} />
       )
     }
   }
@@ -62,17 +62,17 @@ class TodoList extends React.Component<TodoListProps, TodoListState> {
     if (todos.length) {
       return (
         <TodoFooter completedCount={completedCount}
-                activeCount={activeCount}
-                filter={filter}
-                onClearCompleted={this.handleClearCompleted.bind(this)}
-                onShow={this.handleShow.bind(this)} />
+          activeCount={activeCount}
+          filter={filter}
+          onClearCompleted={this.handleClearCompleted.bind(this) }
+          onShow={this.handleShow.bind(this) } />
       )
     }
   }
 
   render() {
     const { todos } = this.props
-    const actions = [ this.props.editTodo, this.props.deleteTodo, this.props.completeTodo ]
+    const actions = [this.props.editTodo, this.props.deleteTodo, this.props.completeTodo]
     const { filter } = this.state
 
     const filteredTodos = todos.filter(TODO_FILTERS[filter])
@@ -83,17 +83,15 @@ class TodoList extends React.Component<TodoListProps, TodoListState> {
 
     return (
       <section className="main">
-        {this.renderToggleAll(completedCount)}
+        {this.renderToggleAll(completedCount) }
         <ul className="todo-list">
           {filteredTodos.map(todo =>
-            <TodoItem key={todo.id} todo={todo} 
+            <TodoItem key={todo.id} todo={todo}
               editTodo={this.props.editTodo} completeTodo={this.props.completeTodo} deleteTodo={this.props.deleteTodo}/>
-          )}
+          ) }
         </ul>
-        {this.renderFooter(completedCount)}
+        {this.renderFooter(completedCount) }
       </section>
     )
   }
 }
-
-export { TodoList };

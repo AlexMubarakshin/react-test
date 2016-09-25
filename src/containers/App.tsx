@@ -6,6 +6,7 @@ import * as TodoActions from '../todo/redux/todo.actions'
 import { Todo } from '../todo/todo.model'
 import { TodoHeader } from '../todo/components/todo-header.component'
 import { TodoList } from '../todo/components/todo-list.component'
+import { getAllTodos } from '../todo/redux/todo.selectors'
 
 type AppProps = {
   todos: Todo[],
@@ -43,12 +44,9 @@ function mapDispatchToProps(dispatch) {
   }  
 }
 
-
 const mapStateToProps = state => ({
-    todos: state.todos
+    todos: getAllTodos(state)
 });
-
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

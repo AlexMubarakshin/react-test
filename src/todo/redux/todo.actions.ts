@@ -1,27 +1,35 @@
 import * as types from './todo.action-types'
-import { Action } from 'redux-actions';
+import { Todo } from '../todo.model'
+import { assign } from 'lodash';
+import { Action, createAction } from 'redux-actions';
 
-export function addTodo(text: string): Action<any> {
-  return { type: types.ADD, payload: { text } }
-}
+export const addTodo = createAction<string, Todo>(
+  types.ADD,
+  (text: string):Todo => ({ text, completed: false })
+)
 
-export function deleteTodo(id: number): Action<any> {
-  return { type: types.DELETE, payload: { id } }
-}
+export const deleteTodo = createAction<Todo>(
+  types.DELETE,
+  (todo) => todo
+)
 
-export function editTodo(id: number, text: string): Action<any> {
-  return { type: types.EDIT, payload: { id, text } }
-}
+export const editTodo = createAction<any, Todo>(
+  types.EDIT,
+  (todo: Todo, newString: string) => <Todo>assign(todo, {text: newString})
+)
 
-export function completeTodo(id: number): Action<any> {
-  return { type: types.COMPLETE, payload: { id } }
-}
+export const completeTodo = createAction<Todo>(
+  types.COMPLETE,
+  (todo) => todo
+)
 
-export function completeAll(): Action<any> {
-  return { type: types.COMPLETE_ALL }
-}
+export const completeAll = createAction<void>(
+  types.COMPLETE_ALL,
+  () => {}
+)
 
-export function clearCompleted(): Action<any> {
-  return { type: types.CLEAR_COMPLETED }
-}
+export const clearCompleted = createAction<void>(
+  types.CLEAR_COMPLETED,
+  () => {}
+)
 

@@ -18,12 +18,14 @@ declare var module: { hot: any };
 const rootEl = document.getElementById('app');
 
 const initialState = {
-  todos: [ 
-    { 
-      id: 1,
-      text: 'todo1',
-      completed: false
-    }]
+  todo: {
+    todos: [ 
+      { 
+        id: 1,
+        text: 'todo1',
+        completed: false
+      }]
+  }
 };
 
 const store: Store<any> = createStore(rootReducer, initialState, (window as any).devToolsExtension && (window as any).devToolsExtension());
