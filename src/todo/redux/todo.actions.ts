@@ -1,6 +1,5 @@
 import * as types from './todo.action-types'
 import { Todo } from '../todo.model'
-import { assign } from 'lodash';
 import { Action, createAction } from 'redux-actions';
 
 export const addTodo = createAction<string, Todo>(
@@ -15,7 +14,7 @@ export const deleteTodo = createAction<Todo>(
 
 export const editTodo = createAction<any, Todo>(
   types.EDIT,
-  (todo: Todo, newString: string) => <Todo>assign(todo, {text: newString})
+  (todo: Todo, newString: string) => <Todo>Object.assign({}, todo, {text: newString})
 )
 
 export const completeTodo = createAction<Todo>(
