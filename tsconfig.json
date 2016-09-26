@@ -10,9 +10,7 @@
     "outDir": "ts-build",
     "jsx": "preserve"
   },
-  "exclude": [
-    "typings/browser",
-    "typings/browser.d.ts",
+  "exclude": [    
     "node_modules"
   ]
 }
