@@ -53,7 +53,7 @@ export class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
         }) }
         type="text"
         placeholder={this.props.placeholder}
-        autoFocus="true"
+        autoFocus={true}
         value={this.state.text}
         onBlur={this.handleBlur.bind(this) }
         onChange={this.handleChange.bind(this) }
