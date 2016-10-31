@@ -32,3 +32,8 @@ export const clearCompleted = createAction<void>(
   () => {}
 )
 
+export const setVisibilityFilter = createAction<string>(
+  types.SET_VISIBILITY_FILTER,
+  (filter: string) => filter
+)
+

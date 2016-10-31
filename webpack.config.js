@@ -34,6 +34,13 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        // Useful to reduce the size of client-side libraries, e.g. react
+        NODE_ENV: JSON.stringify('production'),
+        PLATFORM_ENV: JSON.stringify('web'),
+      },
+    }),
     // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
     new WebpackNotifierPlugin({ alwaysNotify: true }),
     // Add the Webpack HMR plugin so it will notify the browser when the app code changes

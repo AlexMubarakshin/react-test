@@ -4,8 +4,15 @@
     "lodash": "registry:dt/lodash#4.14.0+20160919145112",
     "react": "registry:dt/react#0.14.0+20160829191040",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-native": "registry:dt/react-native#0.34.0+20161012133835",
     "react-redux": "registry:dt/react-redux#4.4.0+20160724070751",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
-    "redux-actions": "registry:dt/redux-actions#0.8.0+20160521154116"
+    "redux-actions": "registry:dt/redux-actions#0.8.0+20160521154116",
+    "redux-devtools": "registry:dt/redux-devtools#3.0.0+20161003133120",
+    "redux-devtools-dock-monitor": "registry:dt/redux-devtools-dock-monitor#1.1.1+20160902130643",
+    "redux-devtools-log-monitor": "registry:dt/redux-devtools-log-monitor#1.0.11+20160902130643",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
+    "reselect": "registry:dt/reselect#2.0.2+20160319031821"
   }
 }
