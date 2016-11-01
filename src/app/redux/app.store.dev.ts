@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import DevTools     from '../../root/containers/web/dev-tools.container';
+import DevTools     from '../../root/containers/dev-tools.container';
 import appReducer from './app.reducer';
 
 declare var module: any;
@@ -16,7 +16,7 @@ const createDevStoreWithMiddleware = compose(
   DevTools.instrument()
 )(createStore);
 
- function configureStore() {
+export default function configureStore() {
   const store = createDevStoreWithMiddleware(appReducer);
 
   // enable webpack hot module replacement for reducers
@@ -29,3 +29,5 @@ const createDevStoreWithMiddleware = compose(
 
   return store;
 }
+
+

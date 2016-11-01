@@ -1,6 +1,6 @@
 // todo/reducer.js
 import * as t from './todo.action-types'
-import { State, SHOW_ALL } from '../todo.state'
+import { State } from '../todo.state'
 import * as c from '../todo.constants'
 import { Todo } from '../todo.model'
 import { handleActions, Action } from 'redux-actions'
@@ -14,7 +14,7 @@ const initialState: State = {
       completed: false,
       id: 0
     }],
-  visibilityFilter: SHOW_ALL
+  visibilityFilter: c.SHOW_ALL
 }
 
 export default handleActions<State, Todo | void | string>({

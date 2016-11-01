@@ -1,40 +1,46 @@
 import React, { PropTypes } from 'react'
-import { Todo } from '../todo.model'
+import TodoInput from './todo-input.component'
 import classnames from 'classnames'
+import TodoItemBase from './todo-item-base.component'
 
-interface TodoProps {  
-  todo: Todo;
-  editTodo: (todo: Todo, text: string) => any;
-  deleteTodo: (todo: Todo) => any;
-  completeTodo: (todo: Todo) => any;
-}
+const styles = require('./todo.css');
 
-interface TodoState {
-  editing: boolean;
-}
+export default class TodoItem extends TodoItemBase {
 
-abstract class TodoItem extends React.Component<TodoProps, TodoState> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      editing: false
-    }
-  }
+  render() {
+    const { todo, completeTodo, deleteTodo } = this.props
 
-  public abstract render();
-  
-  protected handleEnableEditing() {
-    this.setState({ editing: true })
-  }
-
-  protected handleSave(todo: Todo, text: string) {
-    if (text.length === 0) {
-      this.props.deleteTodo(todo)
+    let element
+    if (this.state.editing) {
+      element = (
+        <TodoInput text={todo.text}
+          editing={this.state.editing}
+          onSave={(text) => this.handleSave(todo, text) } />
+      )
     } else {
-      this.props.editTodo(todo, text)
+      element = (
+        <div className="view">
+          <input className="toggle"
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => completeTodo(todo) } />
+          <label onDoubleClick={this.handleEnableEditing.bind(this) }>
+            {todo.text}
+          </label>
+          <button className="destroy"
+            onClick={() => deleteTodo(todo) } />
+        </div>
+      )
     }
-    this.setState({ editing: false })
+
+    return (
+      <li className={classnames({
+        completed: todo.completed,
+        editing: this.state.editing
+      }) }>
+        {element}
+      </li>
+    )
   }
 }
 
-export default TodoItem;

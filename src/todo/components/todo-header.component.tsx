@@ -1,18 +1,18 @@
 import React from 'react'
+import TodoAddItemContainer from '../containers/todo-add-item.container'
+import TodoHeaderBase from './todo-header-base.component'
 
-interface TodoHeaderProps {
-  addTodo: (string) => any;
-}
+const styles = require('./todo.css');
 
-abstract class TodoHeader extends React.Component<TodoHeaderProps, void> {
-  
-  public abstract render();
-  
-  protected handleSave(text) {
-    if (text.length !== 0) {
-      this.props.addTodo(text)
-    }
+export default class TodoHeader extends TodoHeaderBase {
+
+  public render() {
+    return (
+      <header className="header">
+        <h1>Todos</h1>
+        <TodoAddItemContainer newTodo          
+          placeholder="What needs to be done?" />
+      </header>
+    )
   }
 }
-
-export default TodoHeader;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import configureStore from "./app/redux/app.store";
-import App from "./app/containers/native/app.container";
-import Root from "./root/containers/native/root.container";
+import App from "./app/containers/app.container";
+import Root from "./root/containers/root.container";
 
 const store = configureStore();
 

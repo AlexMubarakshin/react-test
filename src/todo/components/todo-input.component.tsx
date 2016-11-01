@@ -1,49 +1,25 @@
 import React from 'react'
 import classnames from 'classnames'
+import TodoInputBase from './todo-input-base.component'
 
-export interface TodoInputProps {
-  onSave: (string) => any;
-  text?: string;
-  placeholder?: string;
-  editing?: boolean;
-  newTodo?: boolean;
+const styles = require('./todo.css');
+
+export default class TodoInput extends TodoInputBase {
+
+  public render() {
+    return (
+      <input className={
+        classnames({
+          edit: this.props.editing,
+          'new-todo': this.props.newTodo
+        }) }
+        type="text"
+        placeholder={this.props.placeholder}
+        autoFocus={true}
+        value={this.state.text}
+        onBlur={this.handleBlur.bind(this) }
+        onChange={(e) => this.handleChange((e.target as HTMLSelectElement).value)}
+        onKeyDown={(e) => this.handleKeyDown(e.which)} />
+    )
+  }
 }
-
-interface TodoInputState {
-  text: string
-}
-
-abstract class TodoInput extends React.Component<TodoInputProps, TodoInputState> {
-
-  constructor(props: TodoInputProps) {
-    super(props)
-    this.state = {
-      text: this.props.text || ''
-    }
-  }
-
-  public abstract render();
-
-  protected handleSubmit(key) {
-    const text = this.state.text;
-    if (key === 13) {
-      this.props.onSave(text)
-      if (this.props.newTodo) {
-        this.setState({ text: '' })
-      }
-    }
-  }
-
-  protected handleChange(text) {
-    this.setState({ text: text })
-  }
-
-  protected handleBlur() {
-    if (!this.props.newTodo) {
-      this.props.onSave(this.state.text)
-    }
-  }
-
-}
-
-export default TodoInput;

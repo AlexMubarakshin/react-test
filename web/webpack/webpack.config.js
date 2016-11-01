@@ -6,19 +6,20 @@ module.exports = {
   devtool: 'eval',
   // This will be our app's entry point (webpack will look for it in the 'src' directory due to the modulesDirectory setting below). Feel free to change as desired.
   entry: {
-    app: [
-    // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    'index.tsx' ]
+    bundle: [
+      // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      'index.tsx' 
+    ]
 
   },
   // Output the bundled JS to dist/app.js
-  output: {
+  output: {        
+    path: path.join(__dirname, '../public'),
     filename: '[name].js',
-    publicPath: '/dist',
-    path: path.resolve('dist')
+    publicPath: '/'    
   },
   resolve: {
     // Look for modules in .ts(x) files first, then .js(x)
@@ -37,8 +38,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         // Useful to reduce the size of client-side libraries, e.g. react
-        NODE_ENV: JSON.stringify('production'),
-        PLATFORM_ENV: JSON.stringify('web'),
+        NODE_ENV: JSON.stringify('development')
       },
     }),
     // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
