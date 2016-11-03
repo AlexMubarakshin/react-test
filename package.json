@@ -6,6 +6,11 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "node web/server.js",
+    "native-start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios-bundle": "react-native bundle --dev false --entry-file index.ios.js --platform ios --bundle-output ios/main.jsbundle",
+    "ios-dev-bundle": "react-native bundle --entry-file index.ios.js --platform ios --bundle-output ios/main.jsbundle",
+    "android-bundle": "react-native bundle --dev false --entry-file index.android.js --platform android --bundle-output android/app/src/main/assets/index.android.bundle",
+    "android-dev-bundle": "react-native bundle --entry-file index.android.js --platform android --bundle-output android/app/src/main/assets/index.android.bundle",
     "run-android": "react-native run-android",
     "web-bundle": "webpack --config web/webpack/webpack.config.js --progress --colors",
     "web-dev": "webpack-dev-server --content-base web/public/ --config web/webpack/webpack.config.js --port 3001 --inline --hot --colors"
@@ -25,9 +30,12 @@
   "homepage": "https://github.com/harlockbcn/react-test#readme",
   "dependencies": {
     "classnames": "^2.2.5",
+    "gulp": "^3.9.1",
+    "native-base": "^0.5.12",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-native": "^0.36.0",
+    "react-native": "^0.32.1",
+    "react-native-maps": "^0.11.0",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-actions": "^0.12.0",

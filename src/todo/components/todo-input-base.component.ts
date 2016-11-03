@@ -33,15 +33,17 @@ abstract class TodoInput extends React.Component<TodoInputProps, TodoInputState>
   public abstract render();
 
   protected handleKeyDown(key) {
-    const text = this.state.text;
     if (key === 13) {
-      this.props.onSave(text)
-      if (this.props.newTodo) {
-        this.setState({ text: '' })
-      }
+      this.handleSubmit();
     }
   }
-
+  protected handleSubmit() {
+    const text = this.state.text;
+    this.props.onSave(text);
+    if (this.props.newTodo) {
+      this.setState({ text: '' })
+    }
+  }
   protected handleChange(text) {
     this.setState({ text: text })
   }

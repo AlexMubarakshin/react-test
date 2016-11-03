@@ -1,13 +1,15 @@
 {
-  "version": "1.8.10",
-  "compilerOptions": {
-    "module": "es6",
-    "target": "es6",
-    "moduleResolution": "node",    
+    "compilerOptions": {    
+    "target": "es2015",
+    "module": "es2015",
+    "jsx": "react",
+    "outDir": "ts-build",    
+    "rootDir": "src",
+    "allowJs": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
-    "sourceMap": true,    
-    "jsx": "preserve"
+    "sourceMap": true        
   },
   "filesGlob": [
         "typings/index.d.ts",
@@ -22,7 +24,10 @@
         "typings/browser.d.ts",
         "index.android.js",
         "index.ios.js",
-        "build",
+        "gulpfile.js",
+        "src/index.tsx",
+        "web",
+        "ts-build",
         "node_modules",
         "type-declarations/require.d.ts"
     ]  
